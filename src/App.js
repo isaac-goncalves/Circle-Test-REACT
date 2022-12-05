@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+
 import './App.css';
+import { useState } from 'react'
+
+const getClickPosition = (e) => {
+  console.log(e)
+  const X = e.clientX;
+  const Y = e.clientY;
+ 
+  return [X, Y];
+
+}
+
+function createCilcle(event) {
+  console.log('Clicou');
+  // return (
+  //   <div class_ame='circle'></div>
+  // )
+  const [X, Y] = getClickPosition(event);
+  console.log(Y);
+  console.log(X);
+
+  // const newCirclesArray = [...circlesArray, {X, Y}];
+
+}
+
+
+
 
 function App() {
+  const [circles,setCircles] = useState([]) 
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Clique em qualquer lugar para criar um circulo</h1>
+      <div onClick={createCilcle} className='circle-area'>Area clicavel
+        <div className='circle'></div></div>
     </div>
   );
 }
