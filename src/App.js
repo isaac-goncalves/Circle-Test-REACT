@@ -5,10 +5,9 @@ import randomcolor from 'randomcolor'
 
 function App() {
   const [circles, setCircles] = useState([])
+
   const [deletedCircles, setDeletedCircles] = useState([])
-
   const getClickPosition = (e) => {
-
     const dim = e.target.getBoundingClientRect()
     const X = e.clientX - dim.left;
     const Y = e.clientY - dim.top;
@@ -16,38 +15,30 @@ function App() {
   }
 
   const deleteCircle = () => {
-
     if (circles.length > 0) {
       const circle = circles.pop()
       setDeletedCircles([...deletedCircles, circle])
       setCircles([...circles])
     }
-
   }
 
   const restoreCircle = () => {
-
     if (deletedCircles.length > 0) {
       const circle = deletedCircles.pop()
       setCircles([...circles, circle])
       setDeletedCircles([...deletedCircles])
     }
-
   }
-
 
   function createCircle(event) {
     console.log('Clicou');
-
     const [X, Y] = getClickPosition(event);
     console.log(Y);
     console.log(X);
-
     let newCircle = (
       <circle
         className='circle'
-        key={Math.random(
-        )}
+        key={Math.random()}
         cx={X}
         cy={Y}
         r="10"
@@ -56,9 +47,7 @@ function App() {
         fill={randomcolor()}
       />
     )
-
     let allCircles = [...circles, newCircle];
-
     console.log("allCircles", allCircles)
     setCircles(allCircles);
   }
